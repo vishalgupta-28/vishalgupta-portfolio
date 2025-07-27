@@ -71,10 +71,11 @@ const LetterSwapForward = ({
 
   return (
     <span
-      className={`flex justify-center items-center relative overflow-hidden ${className}`}
+      className={`flex justify-center items-center relative overflow-hidden leading-none ${className}`}
       onMouseEnter={hoverStart}
       onClick={onClick}
       ref={scopeRef}
+      style={{ lineHeight: "1", alignItems: "center" }}
       {...props}
     >
       <span className="sr-only">{label}</span>
@@ -82,16 +83,36 @@ const LetterSwapForward = ({
       {label.split("").map((letter: string, i: number) => {
         return (
           <span
-            className="whitespace-pre relative flex"
+            className="whitespace-pre relative flex items-center justify-center h-full"
             key={i}
             aria-hidden={true}
+            style={{ minHeight: "1.2em" }}
           >
-            <span className="relative letter" style={{ top: 0 }}>
+            <span 
+              className="relative letter flex items-center justify-center" 
+              style={{ 
+                top: 0,
+                position: "relative",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                height: "100%"
+              }}
+            >
               {letter}
             </span>
             <span
-              className="absolute letter-secondary"
-              style={{ top: reverse ? "-100%" : "100%" }}
+              className="absolute letter-secondary flex items-center justify-center"
+              style={{ 
+                top: reverse ? "-100%" : "100%",
+                left: 0,
+                right: 0,
+                position: "absolute",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                height: "100%"
+              }}
             >
               {letter}
             </span>

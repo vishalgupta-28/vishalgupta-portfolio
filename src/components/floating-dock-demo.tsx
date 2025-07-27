@@ -81,7 +81,10 @@ export default function FloatingDockDemo() {
 
   return (
     <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50">
-      <FloatingDock items={links} />
+      <FloatingDock 
+        items={links} 
+        mobileClassName="translate-y-0"
+      />
     </div>
   );
 }
