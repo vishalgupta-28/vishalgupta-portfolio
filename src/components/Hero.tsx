@@ -4,6 +4,16 @@ import { motion } from "framer-motion";
 import LetterSwapForward from "@/components/ui/letter-swap";
 
 export const Hero = () => {
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
+  };
+
   return (
     <section className="min-h-screen flex items-center justify-center relative z-10">
       <div className="text-center max-w-4xl mx-auto px-6">
@@ -43,22 +53,22 @@ export const Hero = () => {
           transition={{ duration: 0.8, delay: 1 }}
           className="flex flex-col sm:flex-row gap-4 justify-center items-center"
         >
-          <motion.a
-            href="#projects"
-            className="px-8 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-full font-semibold hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300"
+          <motion.button
+            onClick={() => scrollToSection('projects')}
+            className="px-8 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-full font-semibold hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 cursor-pointer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             View My Work
-          </motion.a>
-          <motion.a
-            href="#contact"
-            className="px-8 py-3 border border-white/20 text-white rounded-full font-semibold hover:bg-white/10 transition-all duration-300"
+          </motion.button>
+          <motion.button
+            onClick={() => scrollToSection('contact')}
+            className="px-8 py-3 border border-white/20 text-white rounded-full font-semibold hover:bg-white/10 transition-all duration-300 cursor-pointer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             Get In Touch
-          </motion.a>
+          </motion.button>
         </motion.div>
 
         <motion.div
@@ -81,6 +91,26 @@ export const Hero = () => {
               <div className="text-sm">Major Projects</div>
             </div>
           </div>
+        </motion.div>
+
+        {/* Scroll indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 1.5 }}
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        >
+          <motion.div
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center"
+          >
+            <motion.div
+              animate={{ y: [0, 12, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              className="w-1 h-3 bg-white/50 rounded-full mt-2"
+            />
+          </motion.div>
         </motion.div>
       </div>
     </section>

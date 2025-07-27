@@ -18,7 +18,7 @@ export const FloatingDock = ({
   desktopClassName,
   mobileClassName,
 }: {
-  items: { title: string; icon: React.ReactNode; href: string }[];
+  items: { title: string; icon: React.ReactNode; href: string; onClick?: () => void }[];
   desktopClassName?: string;
   mobileClassName?: string;
 }) => {
@@ -34,7 +34,7 @@ const FloatingDockMobile = ({
   items,
   className,
 }: {
-  items: { title: string; icon: React.ReactNode; href: string }[];
+  items: { title: string; icon: React.ReactNode; href: string; onClick?: () => void }[];
   className?: string;
 }) => {
   const [open, setOpen] = useState(false);
@@ -63,15 +63,13 @@ const FloatingDockMobile = ({
                 }}
                 transition={{ delay: (items.length - 1 - idx) * 0.05 }}
               >
-                <a
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
+                  onClick={item.onClick || (() => {})}
                   key={item.title}
                   className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-50 dark:bg-neutral-900"
                 >
                   <div className="h-4 w-4">{item.icon}</div>
-                </a>
+                </button>
               </motion.div>
             ))}
           </motion.div>
@@ -91,7 +89,7 @@ const FloatingDockDesktop = ({
   items,
   className,
 }: {
-  items: { title: string; icon: React.ReactNode; href: string }[];
+  items: { title: string; icon: React.ReactNode; href: string; onClick?: () => void }[];
   className?: string;
 }) => {
   let mouseX = useMotionValue(Infinity);
@@ -116,13 +114,16 @@ function IconContainer({
   title,
   icon,
   href,
+  onClick,
 }: {
   mouseX: MotionValue;
   title: string;
   icon: React.ReactNode;
   href: string;
+  onClick?: () => void;
 }) {
   let ref = useRef<HTMLDivElement>(null);
+  const [hovered, setHovered] = useState(false);
 
   let distance = useTransform(mouseX, (val) => {
     let bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 };
@@ -162,10 +163,17 @@ function IconContainer({
     damping: 12,
   });
 
-  const [hovered, setHovered] = useState(false);
+  const handleClick = (e: React.MouseEvent) => {
+    if (onClick) {
+      e.preventDefault();
+      onClick();
+    } else if (href.startsWith('http')) {
+      window.open(href, '_blank', 'noopener,noreferrer');
+    }
+  };
 
   return (
-    <a href={href} target="_blank" rel="noopener noreferrer">
+    <button onClick={handleClick}>
       <motion.div
         ref={ref}
         style={{ width, height }}
@@ -192,6 +200,6 @@ function IconContainer({
           {icon}
         </motion.div>
       </motion.div>
-    </a>
+    </button>
   );
 }

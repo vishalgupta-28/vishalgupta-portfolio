@@ -13,6 +13,16 @@ import {
 } from "@tabler/icons-react";
 
 export default function FloatingDockDemo() {
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
+  };
+
   const links = [
     {
       title: "Home",
@@ -20,6 +30,7 @@ export default function FloatingDockDemo() {
         <IconHome className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
       href: "#hero",
+      onClick: () => scrollToSection('hero')
     },
     {
       title: "About",
@@ -27,6 +38,7 @@ export default function FloatingDockDemo() {
         <IconUser className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
       href: "#about",
+      onClick: () => scrollToSection('about')
     },
     {
       title: "Projects",
@@ -34,6 +46,7 @@ export default function FloatingDockDemo() {
         <IconBriefcase className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
       href: "#projects",
+      onClick: () => scrollToSection('projects')
     },
     {
       title: "Contact",
@@ -41,6 +54,7 @@ export default function FloatingDockDemo() {
         <IconMail className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
       href: "#contact",
+      onClick: () => scrollToSection('contact')
     },
     {
       title: "LinkedIn",
