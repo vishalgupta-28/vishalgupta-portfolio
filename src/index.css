@@ -2,14 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Portfolio Design System - Dark theme with elegant effects */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 0 0% 0%;
+    --foreground: 0 0% 98%;
+    
+    /* Portfolio specific colors */
+    --primary: 280 100% 70%;
+    --primary-glow: 300 100% 80%;
+    --secondary: 200 100% 60%;
+    --accent: 45 100% 60%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(280 100% 70%), hsl(300 100% 80%));
+    --gradient-secondary: linear-gradient(135deg, hsl(200 100% 60%), hsl(220 100% 70%));
+    --gradient-accent: linear-gradient(135deg, hsl(45 100% 60%), hsl(60 100% 70%));
+    
+    /* Shadows */
+    --shadow-glow: 0 0 40px hsl(280 100% 70% / 0.3);
+    --shadow-card: 0 20px 50px hsl(0 0% 0% / 0.8);
+    
+    /* Grid */
+    --grid-color: hsl(0 0% 100% / 0.1);
 
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
@@ -101,5 +117,23 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .perspective-distant {
+    perspective: 1000px;
+  }
+  
+  .transform-3d {
+    transform-style: preserve-3d;
+  }
+  
+  .backface-visible {
+    backface-visibility: visible;
+  }
+  
+  .backface-hidden {
+    backface-visibility: hidden;
   }
 }
