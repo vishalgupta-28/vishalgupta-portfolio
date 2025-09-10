@@ -89,29 +89,23 @@ const LetterSwapForward = ({
             style={{ minHeight: "1.2em" }}
           >
             <span 
-              className="relative letter flex items-center justify-center" 
+              className="letter inline-block"
               style={{ 
-                top: 0,
-                position: "relative",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                height: "100%"
+                transform: "translateY(0%)",
+                lineHeight: "1",
+                verticalAlign: "baseline"
               }}
             >
               {letter}
             </span>
             <span
-              className="absolute letter-secondary flex items-center justify-center"
+              className="letter-secondary absolute inline-block"
               style={{ 
                 top: reverse ? "-100%" : "100%",
                 left: 0,
                 right: 0,
-                position: "absolute",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                height: "100%"
+                lineHeight: "1",
+                verticalAlign: "baseline"
               }}
             >
               {letter}
