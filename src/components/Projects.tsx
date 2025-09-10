@@ -16,7 +16,8 @@ export const Projects = () => {
         "25% increase in user productivity"
       ],
       tech: ["Next.js", "Node.js", "LangChain", "Vector DB", "Chrome Extension"],
-      image: "https://images.unsplash.com/photo-1558655146-d09347e92766?w=800&auto=format&fit=crop&q=80"
+      image: "https://images.unsplash.com/photo-1558655146-d09347e92766?w=800&auto=format&fit=crop&q=80",
+      liveUrl: "https://www.carter.fun/"
     },
     {
       title: "PromptlyAI",
@@ -28,7 +29,8 @@ export const Projects = () => {
         "20% increase in user satisfaction"
       ],
       tech: ["React", "Clerk", "Vector Embeddings", "AI", "Context Memory"],
-      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&auto=format&fit=crop&q=80"
+      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&auto=format&fit=crop&q=80",
+      liveUrl: "https://goog-sage.vercel.app/"
     },
     {
       title: "DomainInventor",
@@ -40,7 +42,8 @@ export const Projects = () => {
         "Intelligent business prompt analysis"
       ],
       tech: ["Node.js", "LangChain.js", "Gemini", "RAG", "Vector Search"],
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=80"
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=80",
+      liveUrl: "https://assignment-omega-olive-35.vercel.app/"
     },
     {
       title: "VO.3",
@@ -52,7 +55,8 @@ export const Projects = () => {
         "30% improvement in code management efficiency"
       ],
       tech: ["Next.js", "Node.js", "Anthropic", "WebContainers", "AI"],
-      image: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&auto=format&fit=crop&q=80"
+      image: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&auto=format&fit=crop&q=80",
+      liveUrl: "https://phoenix-imf-gadget-api-development-kx0m.onrender.com/"
     }
   ];
 
@@ -126,6 +130,7 @@ export const Projects = () => {
                         className="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors duration-200"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
+                        onClick={() => window.open(project.liveUrl, '_blank', 'noopener,noreferrer')}
                       >
                         <ExternalLink size={16} />
                         View Project
